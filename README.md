@@ -61,7 +61,8 @@ MacBook前提。
 
 ## 説明
 
-- [課題背景の説明](./DESCRIPTION.md)
-- [課題手順の詳細説明](./INSTRUCTION.md)
+- [課題背景](./BACKGROUND.md)
+- [課題提出方法](./SUBMIT.md)
+- [課題手順の詳細](./DETAILES.md)
 
 ## 参考文献・資料
