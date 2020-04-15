@@ -12,7 +12,7 @@ Akkaは非同期処理を実装するのに有用なツールキットです。
 
 この課題をこなすことがトレーニングのゴールです。課題を通じて手を動かすとともに、トレーナーと対話することで学びを促進することが狙いです。
 
-- [課題提出トレーニングのポリシー](./POLICIES.md)
+- [課題提出トレーニングのポリシー](https://github.com/mvrck-inc/training-akka-java-1-preparation/blob/master/POLICIES.md)
 
 ### この課題で身につく能力
 
