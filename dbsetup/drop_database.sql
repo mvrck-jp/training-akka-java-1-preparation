@@ -1,0 +1,1 @@
+DROP DATABASE IF EXISTS traininig_akka_java_1_preparation;

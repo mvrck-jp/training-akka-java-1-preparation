@@ -1,0 +1,1 @@
+CREATE DATABASE IF NOT EXISTS traininig_akka_java_1_preparation;
