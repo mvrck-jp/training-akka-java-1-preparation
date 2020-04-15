@@ -35,6 +35,8 @@ MacBook前提。
 
 MacBook前提。
 
+- TODO: アプリケーション図示 
+
 - このリポジトリをgit cloneしてください
   - `git clone git@github.com:mvrck-inc/training-akka-java-1-perparation.git`
 - データベースのセットアップをしてください
@@ -43,7 +45,9 @@ MacBook前提。
 - アプリケーションを走らせてください
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
-  - このアプリケーションはWeb API層、アプリケーション層、データベース層が一つのプロセスになったモノリスです
+- curlでデータを挿入してください
+  - レスポンスを確認してください
+  - アプリケーション側のログを確認してください
 - wrkでベンチマークを走らせてください
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
     - t2: 2 threads, c4: 4 http connections, d5: test duration is 5 seconds
