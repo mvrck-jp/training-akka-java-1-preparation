@@ -51,7 +51,9 @@ MacBook前提。
   - アプリケーション側のログを確認してください
 - wrkでベンチマークを走らせてください
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
-    - t2: 2 threads, c4: 4 http connections, d5: test duration is 5 seconds
+    - `-t2`: 2 threads
+    - `-c4`: 4 http connections
+    - `-d5`: 5 seconds of test duration
     - クライアント側とサーバー側の実行結果を確認してください
 - DBをSELECTして不可分性と一貫性が保たれていることを確認してください
   - SELECT *
