@@ -46,6 +46,7 @@ MacBook前提。
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
 - curlでデータを挿入してください
+  - `curl -X POST -H "Content-Type: application/json" -d "{\"ticket_id\": 1, \"user_id\": 2}"  -v http://localhost:8080/orders`
   - レスポンスを確認してください
   - アプリケーション側のログを確認してください
 - wrkでベンチマークを走らせてください
