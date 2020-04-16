@@ -32,11 +32,15 @@ public class OrderRoute extends AllDirectives {
 
   private void insert(Order order) {
     transactionManager.required(() -> {
-      orderDao.insert(order);
       var ticketStock = ticketStockDao.selectById(order.getTicketId());
-      var quantity = ticketStock.getQuantity();
-      ticketStock.setQuantity(quantity - order.getQuantity());
-      ticketStockDao.update(ticketStock);
+      var newQuantity = ticketStock.getQuantity() - order.getQuantity();
+      if(newQuantity >= 0) {
+        ticketStock.setQuantity(newQuantity);
+        ticketStockDao.update(ticketStock);
+        orderDao.insert(order);
+      } else {
+        //do nothing
+      }
     });
   }
 
