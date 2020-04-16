@@ -26,17 +26,17 @@ public class OrderRoute extends AllDirectives {
     var order = new Order();
     order.setTicketId(req.getTicketId());
     order.setUserId(req.getUserId());
-    order.setQuantity(1);
+    order.setQuantity(req.getQuantity());
     return order;
   }
 
   private void insert(Order order) {
     transactionManager.required(() -> {
       orderDao.insert(order);
-      var ticket = ticketStockDao.selectById(order.getTicketId());
-      var quantity = ticket.getQuantity();
-      ticket.setQuantity(quantity - 1);
-      ticketStockDao.update(ticket);
+      var ticketStock = ticketStockDao.selectById(order.getTicketId());
+      var quantity = ticketStock.getQuantity();
+      ticketStock.setQuantity(quantity - order.getQuantity());
+      ticketStockDao.update(ticketStock);
     });
   }
 
