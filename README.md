@@ -40,8 +40,9 @@ MacBook前提。
 - このリポジトリをgit cloneしてください
   - `git clone git@github.com:mvrck-inc/training-akka-java-1-perparation.git`
 - データベースのセットアップをしてください
-  - `CREATE TABLE`を走らせてください(リンク)
-  - `INSERT INTO`を走らせてください(リンク)
+  - `CREATE DATABASE`を走らせてください([リンク](./dbsetup/create_database.sql))
+  - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
+  - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
 - アプリケーションを走らせてください
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
@@ -55,17 +56,18 @@ MacBook前提。
     - `-c4`: 4 http connections
     - `-d5`: 5 seconds of test duration
     - クライアント側とサーバー側の実行結果を確認してください
-- DBをSELECTして不可分性と一貫性が保たれていることを確認してください
-  - SELECT *
+- DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
 - SELECT … FOR UPDATEのUPDATEを外して一貫性が壊れることを確認してください
   - `ctrl+c` // mvn execで走らせたWeb APIサーバの停止
-  - `DROP TABLE`を走らせてください(リンク)
-  - `CREATE TABLE`を走らせてください(リンク)
-  - `SELECT .. FOR UPDATE`から`FOR UPDATE`を消去してください(リンク)
+  - `CREATE DATABASE`を走らせてください([リンク](./dbsetup/create_database.sql))
+  - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
+  - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
+  - DOMAの.sqlファイルに記述した`SELECT .. FOR UPDATE`から`FOR UPDATE`を消去してください([リンク](./src/main/resources/META-INF/com/mycompany/dao/TicketStockDao/selectById.sql))
+  - `mvn clean`
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
-  - `SELECT *`
+  - DBをSELECTして一貫性が壊れていることを確認してください([リンク](./dbsetup/select.sql))
 
 ### 発展的内容:
 
