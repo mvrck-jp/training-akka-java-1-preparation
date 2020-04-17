@@ -43,6 +43,7 @@ MacBook前提。
   - `CREATE DATABASE`を走らせてください([リンク](./dbsetup/create_database.sql))
   - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
   - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
+- `.env.default`ファイル([リンク](./.env.default))を`.env`にファイル名変更し、適切な`DATABASE.USER`と`DATABASE.PASSWORD`を設定してください
 - アプリケーションを走らせてください
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
