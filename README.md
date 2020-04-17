@@ -8,6 +8,10 @@ Akkaは非同期処理を実装するのに有用なツールキットです。
 
 - [次回のトレーニング: Akkaアクターを用いた非同期処理](https://github.com/mvrck-inc/training-akka-java-2-actor)
 
+<p align="center">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/78578847-0b060880-786b-11ea-900b-c6b01b0a6351.png">
+</p>
+
 ## 課題
 
 この課題をこなすことがトレーニングのゴールです。課題を通じて手を動かすとともに、トレーナーと対話することで学びを促進することが狙いです。
@@ -83,7 +87,6 @@ MacBook前提。
 ## 説明
 
 - [課題背景](./BACKGROUND.md)
-- [課題提出方法](./SUBMIT.md)
 - [課題手順の詳細](./DETAILES.md)
 
 ## 参考文献・資料
