@@ -49,19 +49,22 @@ MacBook前提。
   - `CREATE DATABASE`を走らせてください([リンク](./dbsetup/create_database.sql))
   - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
   - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
-- `.env.default`ファイル([リンク](./.env.default))を`.env`にファイル名変更し、適切な`DATABASE.USER`と`DATABASE.PASSWORD`を設定してください
 - アプリケーションを走らせてください
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
+  - もしMySQLのログイン・ユーザとパスワードを変更する場合、以下のJavaのプロパティを`-D`を使って渡してください。TypeSafe Configの仕組みによってconfigの値を上書きできます。([リンク](./src/main/resources/application.conf#L13L19))
+  - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main -Ddatabase.user=xxx -Ddatabase.password=yyy`
 - curlでデータを挿入してください
   - `curl -X POST -H "Content-Type: application/json" -d "{\"ticket_id\": 1, \"user_id\": 2, \"quantity\": 1}"  -v http://localhost:8080/orders`
   - レスポンスを確認してください
   - アプリケーション側のログを確認してください
+  - DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
 - wrkでベンチマークを走らせてください
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
     - `-t2`: 2 threads
     - `-c4`: 4 http connections
     - `-d5`: 5 seconds of test duration
+    - `wrk-scripts/order.lua` ([リンク](./wrk-scrips/order.lua))
     - クライアント側とサーバー側の実行結果を確認してください
 - DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
 - SELECT … FOR UPDATEのUPDATEを外して一貫性が壊れることを確認してください

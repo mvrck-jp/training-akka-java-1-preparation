@@ -20,7 +20,7 @@ MacBook前提。
 <p align="center">
   <img width=640 src="https://user-images.githubusercontent.com/7414320/78578847-0b060880-786b-11ea-900b-c6b01b0a6351.png">
 </p>
-
+  
 - このリポジトリをgit cloneしてください
   - `git clone git@github.com:mvrck-inc/training-akka-java-1-perparation.git`
   
@@ -33,33 +33,25 @@ MacBook前提。
   - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
   - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
 
-`ticket_stocks`テーブルは以下のようになります。
+`ticket_stocks`テーブルは以下のようになります。このトレーニングでは`ticket_id = 1`の方のみ使います。
 
 | ticket_id | quantity |
 | --------- | -------- |
 | 1         | 100      |
 | 2         | 200      |
 
-`orders`テーブルはこの時点では空のテーブルです。
+`orders`テーブルはこの時点では空のテーブルです。このテーブルにレコードが追加される度、`ticket_stocks`テーブルの`quantity`と一貫性を保たなくてはなりません。
 
 | id   | ticket_id | user_id | quantity |
 | ---- | --------- | ------- | -------- |
 
-`http://localhost:8080/orders` にPOSTリクエストを送るたびorderが追加されていきます。
-
-| id   | ticket_id | user_id | quantity |
-| ---- | --------- | ------- | -------- |
-| 1    | 1         | 2       | 1        |
-| 2    | 1         | 2       | 1        |
-| ...  | ...       | ...     | ...      |
-| 100  | 1         | 2       | 1        |
 
 ---  
-- `.env.default`ファイル([リンク](./.env.default))を`.env`にファイル名変更し、適切な`DATABASE.USER`と`DATABASE.PASSWORD`を設定してください
----
 - アプリケーションを走らせてください
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
+  - もしMySQLのログイン・ユーザとパスワードを変更する場合、以下のJavaのプロパティを`-D`を使って渡してください。TypeSafe Configの仕組みによってconfigの値を上書きできます。([リンク](./src/main/resources/application.conf#L13L19))
+  - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main -Ddatabase.user=xxx -Ddatabase.password=yyy`
 
 以下のように表示されるはずです。
 
@@ -75,6 +67,7 @@ AppConfig: Tried to load JDBC properties from .env file. (with environment varia
 Server online at http://localhost:8080/
 ```
 
+---
 - curlでデータを挿入してください
   - `curl -X POST -H "Content-Type: application/json" -d "{\"ticket_id\": 1, \"user_id\": 2, \"quantity\": 1}"  http://localhost:8080/orders`
   - レスポンスを確認してください
@@ -118,12 +111,20 @@ Apr 18, 2020 3:48:42 PM org.seasar.doma.jdbc.tx.LocalTransaction commit
 INFO: [DOMA2064] The local transaction "794948527" is ended.
 ```
 
+<p align="center">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/79639007-c90e8800-81c3-11ea-9b34-d3515cb3de59.jpg">
+</p>
+
+- DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
+
+`ticket_stocks`テーブルの`tikcet_id = 1`のレコードに関して、`quantity = 100`から`quantity = 99`に減っていることがわかります。
+
 | ticket_id | quantity |
 | --------- | -------- |
 | 1         | 99       |
 | 2         | 200      |
 
-`orders`テーブルはこの時点では空のテーブルです。
+`orders`テーブルにはレコードが一件追加されています。`quantity`に関して一貫性は保たれています。
 
 | id   | ticket_id | user_id | quantity |
 | ---- | --------- | ------- | -------- |
@@ -135,20 +136,30 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
     - `-t2`: 2 threads
     - `-c4`: 4 http connections
     - `-d5`: 5 seconds of test duration
+    - `wrk-scripts/order.lua` ([リンク](./wrk-scrips/order.lua))
     - クライアント側とサーバー側の実行結果を確認してください
+
+<p align="center">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/79639615-db8ac080-81c7-11ea-9ff8-123cba6c218c.jpg">
+</p>
+
 
 ---  
 - DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
+
+`ticket_stocks`テーブルの`tikcet_id = 1`のレコードは`quantity = 0`になりました。
 
 | ticket_id | quantity |
 | --------- | -------- |
 | 1         | 0        |
 | 2         | 200      |
 
+`orders`テーブルには`ticket_id = 1, quantity=0`となる100件のレコードが入っていて、`ticket_stocks`テーブルと一貫性が保たれています。
+
 | id   | ticket_id | user_id | quantity |
 | ---- | --------- | ------- | -------- |
 | 1    | 1         | 2       | 1        |
-| 1    | 1         | 2       | 1        |
+| 2    | 1         | 2       | 1        |
 | ...  | ...       | ...     | ...      |
 | ...  | ...       | ...     | ...      |
 | 100  | 1         | 2       | 1        |
@@ -159,7 +170,19 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
   - `CREATE DATABASE`を走らせてください([リンク](./dbsetup/create_database.sql))
   - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
   - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
+
+`ticket_stocks`テーブル、`orders`テーブルはそれぞれ初期の状態に戻ります。
+
+| ticket_id | quantity |
+| --------- | -------- |
+| 1         | 100      |
+| 2         | 200      |
+
+| id   | ticket_id | user_id | quantity |
+| ---- | --------- | ------- | -------- |
+
   - DOMAの.sqlファイルに記述した`SELECT .. FOR UPDATE`から`FOR UPDATE`を消去してください([リンク](./src/main/resources/META-INF/com/mycompany/dao/TicketStockDao/selectById.sql))
+
   - `mvn clean`
   - `mvn compile`
   - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
