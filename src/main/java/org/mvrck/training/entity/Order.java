@@ -1,4 +1,4 @@
-package com.mycompany.entity;
+package org.mvrck.training.entity;
 
 import org.seasar.doma.*;
 

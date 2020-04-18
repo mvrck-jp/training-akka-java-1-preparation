@@ -1,7 +1,7 @@
-package com.mycompany.route;
+package org.mvrck.training.route;
 
 import akka.http.javadsl.server.*;
-import com.mycompany.dao.*;
+import org.mvrck.training.dao.*;
 import org.seasar.doma.jdbc.tx.*;
 
 public class AllRoute extends AllDirectives {

@@ -1,13 +1,13 @@
-package com.mycompany.app;
+package org.mvrck.training.app;
 
 import akka.actor.ActorSystem;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.stream.*;
-import com.mycompany.config.*;
-import com.mycompany.dao.*;
-import com.mycompany.route.*;
+import org.mvrck.training.config.*;
+import org.mvrck.training.dao.*;
+import org.mvrck.training.route.*;
 
 public class Main {
 

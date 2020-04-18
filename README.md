@@ -51,9 +51,9 @@ MacBook前提。
   - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
 - アプリケーションを走らせてください
   - `mvn compile`
-  - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
+  - `mvn exec:java -Dexec.mainClass=org.mvrck.training.app.Main`
   - もしMySQLのログイン・ユーザとパスワードを変更する場合、以下のJavaのプロパティを`-D`を使って渡してください。TypeSafe Configの仕組みによってconfigの値を上書きできます。([リンク](./src/main/resources/application.conf#L13L19))
-  - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main -Ddatabase.user=xxx -Ddatabase.password=yyy`
+  - `mvn exec:java -Dexec.mainClass=org.mvrck.training.app.Main -Ddatabase.user=xxx -Ddatabase.password=yyy`
 - curlでデータを挿入してください
   - `curl -X POST -H "Content-Type: application/json" -d "{\"ticket_id\": 1, \"user_id\": 2, \"quantity\": 1}"  -v http://localhost:8080/orders`
   - レスポンスを確認してください
@@ -72,10 +72,10 @@ MacBook前提。
   - `CREATE DATABASE`を走らせてください([リンク](./dbsetup/create_database.sql))
   - `CREATE TABLE`を走らせてください([リンク](./dbsetup/create_tables.sql))
   - `INSERT INTO`を走らせてください([リンク](./dbsetup/insert_into.sql))
-  - DOMAの.sqlファイルに記述した`SELECT .. FOR UPDATE`から`FOR UPDATE`を消去してください([リンク](./src/main/resources/META-INF/com/mycompany/dao/TicketStockDao/selectById.sql))
+  - DOMAの.sqlファイルに記述した`SELECT .. FOR UPDATE`から`FOR UPDATE`を消去してください([リンク](./src/main/resources/META-INF/org/mvrck/traininig//dao/TicketStockDao/selectById.sql))
   - `mvn clean`
   - `mvn compile`
-  - `mvn exec:java -Dexec.mainClass=com.mycompany.app.Main`
+  - `mvn exec:java -Dexec.mainClass=org.mvrck.training.app.Main`
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
   - DBをSELECTして一貫性が壊れていることを確認してください([リンク](./dbsetup/select.sql))
 

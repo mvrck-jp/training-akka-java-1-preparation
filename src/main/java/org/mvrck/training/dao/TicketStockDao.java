@@ -1,7 +1,7 @@
-package com.mycompany.dao;
+package org.mvrck.training.dao;
 
-import com.mycompany.config.*;
-import com.mycompany.entity.*;
+import org.mvrck.training.config.*;
+import org.mvrck.training.entity.*;
 import org.seasar.doma.*;
 
 @Dao(config = AppConfig.class)

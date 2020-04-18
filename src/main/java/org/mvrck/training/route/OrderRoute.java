@@ -1,10 +1,10 @@
-package com.mycompany.route;
+package org.mvrck.training.route;
 
 import akka.http.javadsl.marshallers.jackson.*;
 import akka.http.javadsl.server.*;
-import com.mycompany.dao.*;
-import com.mycompany.dto.*;
-import com.mycompany.entity.*;
+import org.mvrck.training.dao.*;
+import org.mvrck.training.dto.*;
+import org.mvrck.training.entity.*;
 import org.seasar.doma.jdbc.tx.*;
 
 public class OrderRoute extends AllDirectives {

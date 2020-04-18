@@ -1,4 +1,4 @@
-package com.mycompany.dto;
+package org.mvrck.training.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

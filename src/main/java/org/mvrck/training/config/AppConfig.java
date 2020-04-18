@@ -1,4 +1,4 @@
-package com.mycompany.config;
+package org.mvrck.training.config;
 
 import org.seasar.doma.*;
 import org.seasar.doma.jdbc.dialect.*;
