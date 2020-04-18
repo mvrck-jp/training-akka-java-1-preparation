@@ -39,7 +39,9 @@ MacBook前提。
 
 MacBook前提。
 
-- TODO: アプリケーション図示 
+<p align="center">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/78578847-0b060880-786b-11ea-900b-c6b01b0a6351.png">
+</p>
 
 - このリポジトリをgit cloneしてください
   - `git clone git@github.com:mvrck-inc/training-akka-java-1-perparation.git`
