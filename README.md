@@ -92,6 +92,6 @@ MacBook前提。
 ## 説明
 
 - [課題背景](./BACKGROUND.md)
-- [課題手順の詳細](./DETAILES.md)
+- [課題手順の詳細](./INSTRUCTION.md)
 
 ## 参考文献・資料
