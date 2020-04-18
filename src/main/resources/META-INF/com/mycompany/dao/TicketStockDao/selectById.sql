@@ -1,1 +1,1 @@
-select * from ticket_stocks where ticket_id = /* id */99 FOR UPDATE
+SELECT * FROM ticket_stocks WHERE ticket_id = /* id */99 FOR UPDATE

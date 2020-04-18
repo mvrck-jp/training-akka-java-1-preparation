@@ -189,6 +189,29 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
   - DBをSELECTして一貫性が壊れていることを確認してください([リンク](./dbsetup/select.sql))
 
+`ticket_stocks`テーブル
+
+| ticket_id | quantity |
+| --------- | -------- |
+| 1         | 0        |
+| 2         | 200      |
+
+`orders`テーブル
+
+| id   | ticket_id | user_id | quantity |
+| ---- | --------- | ------- | -------- |
+| 1    | 1         | 2       | 1        |
+| 2    | 1         | 2       | 1        |
+| ...  | ...       | ...     | ...      |
+| ...  | ...       | ...     | ...      |
+| 268  | 1         | 2       | 1        |
+
+`orders`テーブルに対して`SELECT count(*) FROM orders`を走らせると、以下のようにレコード件数が100を超えているので一貫性が壊れていることがわかります。
+
+| count(*) |
+| -------- |
+| 268      |
+
 ### 発展的内容:
 
 - jmhを利用して、akka-httpに影響されない、JavaコードとDB部分のみのパフォーマンス測定をしてください
