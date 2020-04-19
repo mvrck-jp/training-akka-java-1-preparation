@@ -63,7 +63,6 @@ MacBook前提。
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO]
 [INFO] --- exec-maven-plugin:1.6.0:java (default-cli) @ akka-java-1-preparation ---
-AppConfig: Tried to load JDBC properties from .env file. (with environment variables as fallback)
 Server online at http://localhost:8080/
 ```
 

@@ -27,7 +27,7 @@ public class AppConfig implements org.seasar.doma.jdbc.Config {
       dataSource = new LocalTransactionDataSource(url, user, password);
       transactionManager = new LocalTransactionManager(dataSource.getLocalTransaction(getJdbcLogger()));
     } catch (com.typesafe.config.ConfigException e) {
-      throw new RuntimeException("Missing environment variables: one or more of 'database.url', 'database.user', 'database.password' is not found.", e);
+      throw new RuntimeException("Missing config values: one or more of 'database.url', 'database.user', 'database.password' is not found.", e);
     }
   }
 
