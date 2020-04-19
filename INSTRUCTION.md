@@ -115,6 +115,7 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
   <img width=640 src="https://user-images.githubusercontent.com/7414320/79639007-c90e8800-81c3-11ea-9b34-d3515cb3de59.jpg">
 </p>
 
+---
 - DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
 
 `ticket_stocks`テーブルの`tikcet_id = 1`のレコードに関して、`quantity = 100`から`quantity = 99`に減っていることがわかります。
@@ -131,6 +132,20 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
 | 1    | 1         | 2       | 1        |
 
 ---  
+- ORMであるDOMAのログを無効にしてください([リンク](./src/java/main/config/AppConfig#L34L37))
+  - 上記リンク先のコメント化した部分を、コメントではなく有効にしてください
+  - `mvn compile`
+  - `mvn exec:java -Dexec.mainClass=org.mvrck.training.app.Main`
+  - ログのコンソール出力を続けると、次のステップで計測するベンチマークのパフォーマンスに影響します
+
+本来なら、[`JdbcNoLogging`](./src/main/java/org/mvrck/training/config/JdbcNoLogging.java)でログを一切やめるという乱暴な方法でなく、
+DOMAのロガーをSlf4J/logbackに接続して、非同期でロギングすることによりパフォーマンスの悪化を避けたいところです。
+[application.conf](./src/main/resources/application.conf)と[logback.xml](./src/main/resources/logback.xml)を見ればわかるように、akka-http部分ではすでにSlf4J/logbackを使っています。
+しかし、DOMAが提供している[UtilLoggingJdbcLogger ](https://github.com/domaframework/doma/blob/2.27.1/src/main/java/org/seasar/doma/jdbc/UtilLoggingJdbcLogger.java#L5L11)は`java.util.logging.Logger`を使っているため
+Slf4Jに差し替えることが出来ません。どうしてもSlf4Jを使いたければ自分でDOMAのJdbcLoggerを拡張してSlf4Jを使うように実装せねばならず、かなり面倒です。
+そこで、今回は`JdbcNoLogging`という一切ロギングを行わない方法にしました。
+    
+---  
 - wrkでベンチマークを走らせてください
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
     - `-t2`: 2 threads
@@ -143,6 +158,15 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
   <img width=640 src="https://user-images.githubusercontent.com/7414320/79639615-db8ac080-81c7-11ea-9ff8-123cba6c218c.jpg">
 </p>
 
+~/training-akka-java-1-preparation$wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders
+Running 5s test @ http://localhost:8080/orders
+  2 threads and 4 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.73ms    5.33ms  82.67ms   86.54%
+    Req/Sec   128.40     29.29   181.00     66.00%
+  1292 requests in 5.05s, 242.25KB read
+Requests/sec:    255.91
+Transfer/sec:     47.98KB
 
 ---  
 - DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))

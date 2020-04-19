@@ -59,6 +59,11 @@ MacBook前提。
   - レスポンスを確認してください
   - アプリケーション側のログを確認してください
   - DBをSELECTして不可分性と一貫性が保たれていることを確認してください([リンク](./dbsetup/select.sql))
+- ORMであるDOMAのログを無効にしてください([リンク](./src/java/main/config/AppConfig#L34L37))
+  - 上記リンク先のコメント化した部分を、コメントではなく有効にしてください
+  - `mvn compile`
+  - `mvn exec:java -Dexec.mainClass=org.mvrck.training.app.Main`
+  - ログのコンソール出力を続けると、次のステップで計測するベンチマークのパフォーマンスに影響します
 - wrkでベンチマークを走らせてください
   - `wrk -t2 -c4 -d5s -s wrk-scripts/order.lua http://localhost:8080/orders`
     - `-t2`: 2 threads

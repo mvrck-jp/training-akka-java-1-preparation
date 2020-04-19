@@ -1,6 +1,7 @@
 package org.mvrck.training.config;
 
 import org.seasar.doma.*;
+import org.seasar.doma.jdbc.*;
 import org.seasar.doma.jdbc.dialect.*;
 import org.seasar.doma.jdbc.tx.*;
 
@@ -29,6 +30,11 @@ public class AppConfig implements org.seasar.doma.jdbc.Config {
       throw new RuntimeException("Missing environment variables: one or more of 'database.url', 'database.user', 'database.password' is not found.", e);
     }
   }
+
+//  @Override
+//  public JdbcLogger getJdbcLogger() {
+//    return new JdbcNoLogging();
+//  }
 
   @Override
   public Dialect getDialect() {
