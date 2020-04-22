@@ -26,6 +26,10 @@ public class Order {
     this.ticketId = ticketId;
   }
 
+  public int getUserId() {
+    return this.ticketId;
+  }
+
   public void setUserId(int userId) {
     this.userId = userId;
   }
