@@ -111,7 +111,7 @@ INFO: [DOMA2064] The local transaction "794948527" is ended.
 ```
 
 <p align="center">
-  <img width=640 src="https://user-images.githubusercontent.com/7414320/79639007-c90e8800-81c3-11ea-9b34-d3515cb3de59.jpg">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/80276175-cc54c700-8721-11ea-8ec5-d9a804324b00.png">
 </p>
 
 ---
@@ -154,7 +154,7 @@ Slf4Jに差し替えることが出来ません。どうしてもSlf4Jを使い�
     - クライアント側とサーバー側の実行結果を確認してください
 
 <p align="center">
-  <img width=640 src="https://user-images.githubusercontent.com/7414320/79639615-db8ac080-81c7-11ea-9ff8-123cba6c218c.jpg">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/80275884-56e7f700-871f-11ea-9aa5-caa84abe7ec7.png">
 </p>
 
 ```
