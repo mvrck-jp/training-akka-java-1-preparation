@@ -20,7 +20,7 @@
 チケット販売システムのすべてを実装すると大変なので、非同期処理とDB排他制御を学べる最小部分を実装します。(下図)
 
 <p align="center">
-  <img width=640 src="https://user-images.githubusercontent.com/7414320/78578938-2cff8b00-786b-11ea-883d-084ee4f7ccb9.png">
+  <img width=640 src="https://user-images.githubusercontent.com/7414320/80281366-8578c880-8745-11ea-9bcc-d25b6ef9f1a0.png">
 </p>
 
 パフォーマンスにDBトランザクションの使用がどれくらい影響するか計測するために、wrkを使ったベンチマークを行いましょう。
