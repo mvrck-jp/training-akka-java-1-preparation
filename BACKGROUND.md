@@ -31,4 +31,10 @@ wrkはHTTPサーバーのマイクロ・ベンチマーキングを行うツー�
 
 Akkaの機能はアクターを使った非同期処理にとどまりません。一連のトレーニングではAkkaのアクター、イベントソーシング、CQRS、クラスタリングなどの機能を動かします。
 
-- [課題手順の詳細](./INSTRUCTION.md)
+それでは[課題手順の詳細](./INSTRUCTION.md)をみながら、実際に手を動かして課題に取り組んでみてください！
+
+## 参考文献
+
+- [嵐のコンサートがあるとダブルブッキングしてしまうホテル予約システムを作ってみた - 徳丸浩の日記](https://blog.tokumaru.org/2015/05/blog-post.html) 
+- [InnoDB Transaction Model - MySQL](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
+- [Database Transactions, part 2: Examples - Barry Brown, YouTube](https://www.youtube.com/watch?v=PguCDI_fi3U)

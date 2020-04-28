@@ -100,4 +100,15 @@ MacBook前提。
 - [課題背景](./BACKGROUND.md)
 - [課題手順の詳細](./INSTRUCTION.md)
 
-## 参考文献・資料
+## 参考文献
+
+- [嵐のコンサートがあるとダブルブッキングしてしまうホテル予約システムを作ってみた - 徳丸浩の日記](https://blog.tokumaru.org/2015/05/blog-post.html) 
+- [InnoDB Transaction Model - MySQL](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
+- [Database Transactions, part 2: Examples - Barry Brown, YouTube](https://www.youtube.com/watch?v=PguCDI_fi3U)
+- [HTTP POST - Everything curl](https://ec.haxx.se/http/http-post)
+- [wg/wrk - Modern HTTP benchmarking tool](https://github.com/wg/wrk)
+- [InnoDB Transaction Model - MySQL](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
+- [Database Transactions, part 2: Examples - Barry Brown, YouTube](https://www.youtube.com/watch?v=PguCDI_fi3U)
+- [Code Tools : jmh - OpenJDK](https://openjdk.java.net/projects/code-tools/jmh/)
+- [Trigger Syntax and Examples - MySQL](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html)
+

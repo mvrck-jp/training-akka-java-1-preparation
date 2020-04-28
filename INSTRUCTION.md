@@ -246,3 +246,11 @@ Transfer/sec:     19.93KB
 - 履歴管理のためにトリガとAuditテーブルを設定してください、その上でパフォーマンス測定してください
   - その前に、トランザクション内でトリガがテーブルをアップデートする場合、トランザクション内の更新として扱われるのか確認
   - [発火元クエリのトランザクションの一部として処理されるようです。](https://heartbeats.jp/hbblog/2013/01/mysql.html)
+
+## 参考文献
+
+- [HTTP POST - Everything curl](https://ec.haxx.se/http/http-post)
+- [wg/wrk - Modern HTTP benchmarking tool](https://github.com/wg/wrk)
+- [InnoDB Transaction Model - MySQL](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
+- [Database Transactions, part 2: Examples - Barry Brown, YouTube](https://www.youtube.com/watch?v=PguCDI_fi3U)
+- [Code Tools : jmh - OpenJDK](https://openjdk.java.net/projects/code-tools/jmh/)
